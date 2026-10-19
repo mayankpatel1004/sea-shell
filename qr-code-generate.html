@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator & Scanner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QRCode.js for generating QR Codes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Html5-QRCode for Scanning QR Codes -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        #reader {
+            width: 100% !important;
+            border: none !important;
+        }
+        #reader video {
+            width: 100% !important;
+            border-radius: 0.75rem;
+            object-fit: cover;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700/80 py-4 px-6 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-xl shadow-lg shadow-indigo-500/25 text-white">
+                    <i class="fa-solid fa-qrcode text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-white">Product QR Studio</h1>
+                    <p class="text-xs text-slate-400">Generator & Smart Decoder</p>
+                </div>
+            </div>
+            
+            <!-- App Mode Switcher -->
+            <div class="flex p-1 bg-slate-900/80 rounded-xl border border-slate-700/80">
+                <button id="mode-gen" onclick="switchAppMode('generator')" 
+                        class="py-1.5 px-3.5 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center gap-2 bg-indigo-600 text-white shadow-md">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Generate QR</span>
+                </button>
+                <button id="mode-scan" onclick="switchAppMode('scanner')" 
+                        class="py-1.5 px-3.5 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200">
+                    <i class="fa-solid fa-expand"></i>
+                    <span>Scan QR</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col gap-6">
+
+        <!-- Notification Toast -->
+        <div id="toast-message" class="hidden p-4 rounded-xl text-sm font-medium transition-all duration-300 shadow-xl border"></div>
+
+        <!-- ================= GENERATOR SECTION ================= -->
+        <section id="section-generator" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left: Form Input -->
+            <div class="lg:col-span-7 bg-slate-800/60 border border-slate-700/80 rounded-2xl p-5 md:p-6 shadow-xl flex flex-col gap-5">
+                <div class="flex items-center justify-between border-b border-slate-700/60 pb-3">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-boxes-packing text-indigo-400"></i>
+                        <h2 class="font-semibold text-base text-slate-200">Product Details</h2>
+                    </div>
+                    <span class="text-xs text-slate-400 bg-slate-700/50 px-2.5 py-1 rounded-full border border-slate-600/40">QR Payload Data</span>
+                </div>
+
+                <form id="product-form" onsubmit="generateProductQR(event)" class="flex flex-col gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Product Name <span class="text-rose-400">*</span></label>
+                            <input type="text" id="prod-name" required value="XYC" placeholder="e.g. Mineral Water Bottle" 
+                                   class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Product Price ($/₹) <span class="text-rose-400">*</span></label>
+                            <input type="text" id="prod-price" required value="123" placeholder="e.g. 123" 
+                                   class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Batch Number</label>
+                            <input type="text" id="prod-batch" value="BATCH-2026-X8" placeholder="e.g. BATCH-001" 
+                                   class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Mfg / Exp Date</label>
+                            <input type="text" id="prod-date" value="2026-10-19" placeholder="YYYY-MM-DD" 
+                                   class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1.5">Description / Specs</label>
+                        <textarea id="prod-desc" rows="2" placeholder="e.g. 500ml Reverse Osmosis Packaged Drinking Water" 
+                                  class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">Packaged Drinking Water with Added Minerals</textarea>
+                    </div>
+
+                    <!-- Custom Payload Format Choice -->
+                    <div class="pt-2">
+                        <label class="block text-xs font-medium text-slate-300 mb-1.5">QR Encoding Format</label>
+                        <div class="flex gap-4 bg-slate-900/50 p-2 rounded-xl border border-slate-700/60 text-xs">
+                            <label class="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
+                                <input type="radio" name="encoding-format" value="json" checked class="accent-indigo-500">
+                                <span>JSON Object (Structured Modal)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
+                                <input type="radio" name="encoding-format" value="text" class="accent-indigo-500">
+                                <span>Plain Text Format</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="mt-2 w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-medium text-sm rounded-xl transition shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-qrcode"></i>
+                        <span>Generate Custom QR Code</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right: Live QR Preview Card -->
+            <div class="lg:col-span-5 bg-slate-800/60 border border-slate-700/80 rounded-2xl p-5 md:p-6 shadow-xl flex flex-col items-center justify-between min-h-[380px]">
+                <div class="w-full flex items-center justify-between border-b border-slate-700/60 pb-3">
+                    <h3 class="font-semibold text-base text-slate-200">Generated QR Code</h3>
+                    <span class="text-xs text-indigo-400 font-mono">Live Canvas</span>
+                </div>
+
+                <!-- QR Container -->
+                <div class="my-auto flex flex-col items-center justify-center p-6 bg-white rounded-2xl shadow-2xl relative group">
+                    <div id="qrcode-canvas" class="flex items-center justify-center"></div>
+                </div>
+
+                <!-- QR Action Buttons -->
+                <div class="w-full flex gap-3 pt-2">
+                    <button onclick="downloadQRCode()" class="flex-1 py-2.5 px-3 bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Download PNG</span>
+                    </button>
+                    <button onclick="copyQRCodeToClipboard()" class="flex-1 py-2.5 px-3 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 font-medium text-xs rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>Copy Image</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SCANNER SECTION ================= -->
+        <section id="section-scanner" class="hidden flex-col gap-6">
+            
+            <!-- Scan Tabs -->
+            <div class="flex p-1 bg-slate-800 rounded-xl border border-slate-700/80 max-w-md mx-auto w-full">
+                <button id="scan-tab-upload" onclick="switchScanMethod('upload')" 
+                        class="flex-1 py-2 px-4 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-md">
+                    <i class="fa-solid fa-file-image"></i>
+                    <span>Image / Drag & Drop</span>
+                </button>
+                <button id="scan-tab-camera" onclick="switchScanMethod('camera')" 
+                        class="flex-1 py-2 px-4 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center justify-center gap-2 text-slate-400 hover:text-slate-200">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Live Camera</span>
+                </button>
+            </div>
+
+            <!-- Image Upload Box -->
+            <div id="scan-upload-container" class="max-w-xl mx-auto w-full">
+                <div id="drop-zone" 
+                     class="border-2 border-dashed border-slate-700 hover:border-indigo-500 bg-slate-800/40 hover:bg-slate-800/70 transition-all rounded-2xl p-8 text-center cursor-pointer flex flex-col items-center justify-center min-h-[280px]">
+                    <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+                    
+                    <div id="upload-prompt" class="flex flex-col items-center gap-3">
+                        <div class="w-16 h-16 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-200">Click to upload or drag & drop QR image</p>
+                            <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, WEBP formats</p>
+                        </div>
+                        <button class="mt-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold rounded-xl transition">
+                            Browse File
+                        </button>
+                    </div>
+
+                    <!-- Selected Image Preview -->
+                    <div id="image-preview-container" class="hidden flex-col items-center gap-3 w-full">
+                        <div class="relative max-h-56 overflow-hidden rounded-xl border border-slate-700 bg-slate-900/50">
+                            <img id="image-preview" src="" alt="Selected QR Image" class="max-h-56 object-contain mx-auto" />
+                        </div>
+                        <button onclick="triggerFileInput(event)" class="px-3 py-1.5 text-xs font-medium bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">
+                            <i class="fa-solid fa-arrows-rotate mr-1"></i> Scan Another Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Camera View Box -->
+            <div id="scan-camera-container" class="hidden max-w-md mx-auto w-full flex-col items-center gap-4 bg-slate-800/60 border border-slate-700 rounded-2xl p-4">
+                <div class="w-full overflow-hidden rounded-xl bg-slate-900 relative">
+                    <div id="reader"></div>
+                </div>
+                <p class="text-xs text-slate-400 text-center">Center the QR code inside the viewfinder to scan automatically.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Hidden element required for file scanning using html5-qrcode -->
+    <div id="hidden-html5-qrcode" class="hidden"></div>
+
+    <!-- ================= SCANNED RESULT MODAL POPUP ================= -->
+    <div id="result-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 border border-slate-700/80 rounded-2xl max-w-md w-full shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="modal-card">
+            
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5 text-white">
+                    <i class="fa-solid fa-circle-check text-emerald-300 text-xl"></i>
+                    <h3 class="font-bold text-base">Product Details Found</h3>
+                </div>
+                <button onclick="closeModal()" class="text-white/80 hover:text-white p-1 rounded-lg transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 flex flex-col gap-4 max-h-[75vh] overflow-y-auto" id="modal-body">
+                <!-- Dynamically populated key-value details -->
+            </div>
+
+            <!-- Modal Footer / Actions -->
+            <div class="bg-slate-900/80 border-t border-slate-700/60 px-6 py-4 flex gap-3">
+                <button onclick="copyModalContent()" class="flex-1 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs md:text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Copy Info</span>
+                </button>
+                <button onclick="closeModal()" class="py-2.5 px-5 bg-slate-700 hover:bg-slate-600 text-slate-300 font-medium text-xs md:text-sm rounded-xl transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        let qrCodeInstance = null;
+        let html5QrScanner = null;
+        let isCameraActive = false;
+        let currentModalText = "";
+
+        // On Page Load
+        window.addEventListener('load', () => {
+            // Generate initial QR code
+            generateProductQR();
+            setupDragAndDrop();
+        });
+
+        // 1. App Navigation Modes (Generator vs Scanner)
+        function switchAppMode(mode) {
+            const btnGen = document.getElementById('mode-gen');
+            const btnScan = document.getElementById('mode-scan');
+            const secGen = document.getElementById('section-generator');
+            const secScan = document.getElementById('section-scanner');
+
+            if (mode === 'generator') {
+                btnGen.className = "py-1.5 px-3.5 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center gap-2 bg-indigo-600 text-white shadow-md";
+                btnScan.className = "py-1.5 px-3.5 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200";
+                secGen.classList.remove('hidden');
+                secScan.classList.add('hidden');
+                stopCamera();
+            } else {
+                btnScan.className = "py-1.5 px-3.5 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center gap-2 bg-indigo-600 text-white shadow-md";
+                btnGen.className = "py-1.5 px-3.5 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200";
+                secScan.classList.remove('hidden');
+                secScan.classList.add('flex');
+                secGen.classList.add('hidden');
+            }
+        }
+
+        // 2. QR Code Generator Logic
+        function generateProductQR(event) {
+            if (event) event.preventDefault();
+
+            const name = document.getElementById('prod-name').value.trim();
+            const price = document.getElementById('prod-price').value.trim();
+            const batch = document.getElementById('prod-batch').value.trim();
+            const date = document.getElementById('prod-date').value.trim();
+            const desc = document.getElementById('prod-desc').value.trim();
+
+            const encodingFormat = document.querySelector('input[name="encoding-format"]:checked')?.value || 'json';
+
+            let qrPayload = "";
+
+            if (encodingFormat === 'json') {
+                // const dataObj = {
+                //     "Product Name": name,
+                //     "Product Price": price,
+                //     "Batch Number": batch,
+                //     "Mfg Date": date,
+                //     "Description": desc
+                // };
+                const dataObj = {
+                    "Product Name": name,
+                    "Product Price": price
+                };
+                qrPayload = JSON.stringify(dataObj, null, 2);
+            } else {
+                qrPayload = `Product Name : ${name}\nProduct Price : ${price}\nBatch Number : ${batch}\nMfg Date : ${date}\nDescription : ${desc}`;
+            }
+
+            // Clear previous canvas
+            const qrCanvasContainer = document.getElementById('qrcode-canvas');
+            qrCanvasContainer.innerHTML = "";
+
+            // Render new QR Code
+            qrCodeInstance = new QRCode(qrCanvasContainer, {
+                text: qrPayload,
+                width: 200,
+                height: 200,
+                colorDark: "#0f172a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            if (event) {
+                showToast("New QR Code generated!", "success");
+            }
+        }
+
+        function downloadQRCode() {
+            const img = document.querySelector('#qrcode-canvas img');
+            const canvas = document.querySelector('#qrcode-canvas canvas');
+            let src = "";
+
+            if (img && img.src) {
+                src = img.src;
+            } else if (canvas) {
+                src = canvas.toDataURL("image/png");
+            }
+
+            if (!src) {
+                showToast("Generate a QR code first.", "error");
+                return;
+            }
+
+            const link = document.createElement('a');
+            link.href = src;
+            link.download = `QR_${document.getElementById('prod-name').value || 'product'}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("QR Code downloaded successfully!", "success");
+        }
+
+        function copyQRCodeToClipboard() {
+            const canvas = document.querySelector('#qrcode-canvas canvas');
+            if (canvas) {
+                canvas.toBlob((blob) => {
+                    try {
+                        navigator.clipboard.write([
+                            new ClipboardItem({ 'image/png': blob })
+                        ]);
+                        showToast("QR Image copied to clipboard!", "success");
+                    } catch (err) {
+                        showToast("Clipboard copy failed in this browser context.", "error");
+                    }
+                });
+            } else {
+                showToast("QR Code image not available for direct copy.", "error");
+            }
+        }
+
+        // 3. Scanner Sub-Tabs Logic (Upload vs Camera)
+        function switchScanMethod(method) {
+            const tabUpload = document.getElementById('scan-tab-upload');
+            const tabCamera = document.getElementById('scan-tab-camera');
+            const containerUpload = document.getElementById('scan-upload-container');
+            const containerCamera = document.getElementById('scan-camera-container');
+
+            if (method === 'upload') {
+                tabUpload.className = "flex-1 py-2 px-4 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-md";
+                tabCamera.className = "flex-1 py-2 px-4 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center justify-center gap-2 text-slate-400 hover:text-slate-200";
+                containerUpload.classList.remove('hidden');
+                containerCamera.classList.add('hidden');
+                containerCamera.classList.remove('flex');
+                stopCamera();
+            } else {
+                tabCamera.className = "flex-1 py-2 px-4 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-indigo-600 text-white shadow-md";
+                tabUpload.className = "flex-1 py-2 px-4 rounded-lg font-medium text-xs md:text-sm transition-all duration-200 flex items-center justify-center gap-2 text-slate-400 hover:text-slate-200";
+                containerCamera.classList.remove('hidden');
+                containerCamera.classList.add('flex');
+                containerUpload.classList.add('hidden');
+                startCamera();
+            }
+        }
+
+        // Drag & Drop Setup
+        function setupDragAndDrop() {
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('file-input');
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, false);
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => dropZone.classList.add('border-indigo-500', 'bg-slate-800'), false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => dropZone.classList.remove('border-indigo-500', 'bg-slate-800'), false);
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                if (dt.files && dt.files.length > 0) {
+                    fileInput.files = dt.files;
+                    processImageFile(dt.files[0]);
+                }
+            });
+
+            dropZone.addEventListener('click', (e) => {
+                if (e.target.closest('button')?.getAttribute('onclick')?.includes('triggerFileInput')) return;
+                fileInput.click();
+            });
+        }
+
+        function triggerFileInput(e) {
+            e.stopPropagation();
+            document.getElementById('file-input').click();
+        }
+
+        function handleFileSelect(e) {
+            if (e.target.files.length > 0) {
+                processImageFile(e.target.files[0]);
+            }
+        }
+
+        // Decode Image File
+        async function processImageFile(file) {
+            if (!file.type.startsWith('image/')) {
+                showToast('Please select a valid image file.', 'error');
+                return;
+            }
+
+            // Preview image
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('image-preview').src = e.target.result;
+                document.getElementById('upload-prompt').classList.add('hidden');
+                const previewContainer = document.getElementById('image-preview-container');
+                previewContainer.classList.remove('hidden');
+                previewContainer.classList.add('flex');
+            };
+            reader.readAsDataURL(file);
+
+            showToast('Reading QR code from image...', 'info');
+
+            try {
+                const scanner = new Html5Qrcode("hidden-html5-qrcode");
+                const resultText = await scanner.scanFile(file, true);
+                openModal(resultText);
+            } catch (err) {
+                console.error(err);
+                showToast('No readable QR code found in this image.', 'error');
+            }
+        }
+
+        // Camera Controls
+        function startCamera() {
+            if (isCameraActive) return;
+
+            html5QrScanner = new Html5Qrcode("reader");
+            const config = { fps: 10, qrbox: { width: 220, height: 220 } };
+
+            html5QrScanner.start(
+                { facingMode: "environment" },
+                config,
+                (decodedText) => {
+                    openModal(decodedText);
+                },
+                (errorMessage) => {
+                    // Constant scanner cycle, ignoring frame failures
+                }
+            ).then(() => {
+                isCameraActive = true;
+            }).catch(err => {
+                console.error("Camera start error: ", err);
+                showToast("Could not start camera. Check permissions.", "error");
+            });
+        }
+
+        function stopCamera() {
+            if (html5QrScanner && isCameraActive) {
+                html5QrScanner.stop().then(() => {
+                    isCameraActive = false;
+                }).catch(err => console.error("Camera stop error: ", err));
+            }
+        }
+
+        // 4. Modal Popup Display
+        function openModal(rawText) {
+            currentModalText = rawText;
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = "";
+
+            let parsedObj = null;
+
+            // Attempt JSON Parse
+            try {
+                parsedObj = JSON.parse(rawText);
+            } catch (e) {
+                parsedObj = null;
+            }
+
+            if (parsedObj && typeof parsedObj === 'object') {
+                // Display as styled Key-Value table
+                for (const [key, val] of Object.entries(parsedObj)) {
+                    const row = document.createElement('div');
+                    row.className = "flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-slate-900/80 border border-slate-700/60 rounded-xl gap-1";
+                    row.innerHTML = `
+                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">${escapeHtml(key)}</span>
+                        <span class="text-sm font-medium text-emerald-400 font-mono break-all">${escapeHtml(String(val))}</span>
+                    `;
+                    modalBody.appendChild(row);
+                }
+            } else {
+                // Display plain text formatted line by line
+                const lines = rawText.split('\n').filter(line => line.trim() !== "");
+                
+                if (lines.length > 0) {
+                    lines.forEach(line => {
+                        const parts = line.split(':');
+                        const row = document.createElement('div');
+                        row.className = "flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-slate-900/80 border border-slate-700/60 rounded-xl gap-1";
+
+                        if (parts.length >= 2) {
+                            const key = parts[0].trim();
+                            const val = parts.slice(1).join(':').trim();
+                            row.innerHTML = `
+                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">${escapeHtml(key)}</span>
+                                <span class="text-sm font-medium text-emerald-400 font-mono break-all">${escapeHtml(val)}</span>
+                            `;
+                        } else {
+                            row.innerHTML = `<span class="text-sm text-slate-200 font-mono break-all">${escapeHtml(line)}</span>`;
+                        }
+                        modalBody.appendChild(row);
+                    });
+                } else {
+                    modalBody.innerHTML = `<p class="text-sm text-slate-300 font-mono break-all bg-slate-900/80 p-3 rounded-xl border border-slate-700">${escapeHtml(rawText)}</p>`;
+                }
+            }
+
+            // Show Modal with Animation
+            const modal = document.getElementById('result-modal');
+            const card = document.getElementById('modal-card');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('result-modal');
+            const card = document.getElementById('modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function copyModalContent() {
+            if (!currentModalText) return;
+            const textarea = document.createElement('textarea');
+            textarea.value = currentModalText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast("Product details copied to clipboard!", "success");
+        }
+
+        // Helper Utility Functions
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function showToast(msg, type) {
+            const toast = document.getElementById('toast-message');
+            toast.textContent = msg;
+            toast.className = "p-4 rounded-xl text-sm font-medium transition-all duration-300 shadow-xl border fixed top-20 right-6 z-50 max-w-sm";
+
+            if (type === 'error') {
+                toast.classList.add('bg-rose-950/90', 'text-rose-200', 'border-rose-700');
+            } else if (type === 'success') {
+                toast.classList.add('bg-emerald-950/90', 'text-emerald-200', 'border-emerald-700');
+            } else {
+                toast.classList.add('bg-indigo-950/90', 'text-indigo-200', 'border-indigo-700');
+            }
+
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
