@@ -199,6 +199,31 @@
                 marketer: 'SUMAN ENTERPRISES'
             },
             {
+                id: 'kokkam-200ml',
+                name: 'SEA Shells Kokkam Drink',
+                subtitle: 'Sugar Free Kokkam Refreshing Drink',
+                category: 'Flavoured Drink',
+                volume: '200 ml',
+                price: '₹10',
+                priceNum: 10,
+                tag: 'Sugar Free',
+                badgeBg: 'bg-rose-500',
+                imageType: 'kokkam',
+                shortDesc: 'Tangy and refreshing Kokkam flavour, sugar-free and priced at just ₹10 for instant hydration.',
+                description: 'Recharge your day with the tangy punch of SEA Shells Kokkam. Recreating the authentic taste of Indian home-style Kokkam juice, this beverage is completely sugar-free and priced at just ₹10 for instant on-the-go cooling.',
+                ingredients: 'RO Purified Water, Kokkam Flavoured Extracts, Acidity Regulator (INS 330, INS 296), Sodium Citrate, Salt, Artificial Sweetener, Permitted Preservatives.',
+                nutrition: [
+                    { label: 'Energy', val: '0 kcal' },
+                    { label: 'Carbohydrates', val: '0 g' },
+                    { label: 'Total Sugars', val: '0 g' },
+                    { label: 'Fat', val: '0 g' },
+                    { label: 'Sodium', val: '15 mg' },
+                    { label: 'Protein', val: '0 g' }
+                ],
+                manufacturer: 'Mexer Foods And Beverages Pvt. Ltd.',
+                marketer: 'SUMAN ENTERPRISES'
+            },
+            {
                 id: 'water-200ml',
                 name: 'SEA Shells Packaged Water 200ml',
                 subtitle: 'Purified Packaged Drinking Water',
@@ -387,6 +412,48 @@
                         <path d="M28 170 Q24 230 28 320" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
                     </svg>
                 </div>`;
+            } else if (type === 'kokkam') {
+                return `
+                <div class="relative w-full h-72 flex items-center justify-center p-4">
+                    <svg class="h-full bottle-shadow max-w-full" viewBox="0 0 160 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Deep red cap for Kokkam -->
+                        <rect x="52" y="10" width="56" height="30" rx="4" fill="#B91C1C"/>
+                        <rect x="50" y="36" width="60" height="8" rx="2" fill="#7F1D1D"/>
+                        
+                        <!-- Bottle Neck & Body -->
+                        <path d="M58 44 L60 80 Q60 110 38 135 C20 160 20 220 20 280 C20 330 35 365 50 370 Q80 375 110 370 C125 365 140 330 140 280 C140 220 140 160 122 135 Q100 110 100 80 L102 44 Z" fill="#FECACA" opacity="0.25"/>
+                        <!-- Deep reddish Kokkam liquid -->
+                        <path d="M59 60 L60 80 Q60 110 38 135 C20 160 20 220 20 280 C20 330 35 365 50 370 Q80 375 110 370 C125 365 140 330 140 280 C140 220 140 160 122 135 Q100 110 100 80 L101 60 Z" fill="#DC2626" opacity="0.65"/>
+
+                        <!-- Label Section -->
+                        <rect x="20" y="150" width="120" height="115" fill="#FEE2E2"/>
+                        <rect x="20" y="150" width="120" height="42" fill="#7F1D1D"/>
+
+                        <!-- Brand Header -->
+                        <text x="80" y="172" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="900" font-size="16" text-anchor="middle">SEA</text>
+                        <text x="80" y="184" fill="#FFF" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">Shells</text>
+
+                        <!-- Price & Sugar Free Badge -->
+                        <rect x="95" y="154" width="40" height="15" rx="3" fill="#FBC02D"/>
+                        <text x="115" y="165" fill="#1B5E20" font-family="Arial, sans-serif" font-weight="bold" font-size="8" text-anchor="middle">@ Just ₹10/-</text>
+                        <circle cx="115" cy="180" r="10" fill="#FFFFFF"/>
+                        <text x="115" y="179" fill="#1B5E20" font-family="Arial, sans-serif" font-weight="bold" font-size="6" text-anchor="middle">Sugar</text>
+                        <text x="115" y="185" fill="#1B5E20" font-family="Arial, sans-serif" font-weight="bold" font-size="6" text-anchor="middle">Free</text>
+
+                        <!-- Kokkam Text in Bold -->
+                        <text x="80" y="220" fill="#7F1D1D" font-family="Arial, sans-serif" font-weight="900" font-size="20" text-anchor="middle">KOKKAM</text>
+                        <text x="80" y="240" fill="#991B1B" font-family="Arial, sans-serif" font-weight="bold" font-size="8" text-anchor="middle">A Kokkam Flavoured Drink</text>
+
+                        <!-- Kokkam berry graphic (simplified) -->
+                        <circle cx="48" cy="228" r="10" fill="#B91C1C" opacity="0.7"/>
+                        <circle cx="112" cy="228" r="10" fill="#B91C1C" opacity="0.7"/>
+                        <path d="M48 222 Q55 210 62 222" stroke="#166534" stroke-width="2" fill="none"/>
+                        <path d="M112 222 Q105 210 98 222" stroke="#166534" stroke-width="2" fill="none"/>
+
+                        <!-- Bottle Shine Highlights -->
+                        <path d="M28 170 Q24 230 28 320" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+                    </svg>
+                </div>`;
             } else {
                 // Packaged Water Bottle SVG
                 return `
@@ -445,22 +512,30 @@
                             </div>
                         </div>
 
-                        <!-- Hero Feature Cards showing 2 main drinks -->
-                        <div class="grid grid-cols-2 gap-4 max-w-md mx-auto lg:max-w-none">
+                        <!-- Hero Feature Cards showing 3 flavoured drinks (now including Kokkam) -->
+                        <div class="grid grid-cols-3 gap-3 max-w-md mx-auto lg:max-w-none">
                             <!-- Pineapple Preview Card -->
-                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center flex flex-col items-center">
+                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-2xl text-center flex flex-col items-center">
                                 ${renderBottleGraphic('pineapple')}
                                 <div class="mt-2">
                                     <span class="bg-amber-400 text-slate-900 text-xs font-bold px-2.5 py-0.5 rounded-full">₹10 | Sugar Free</span>
-                                    <h3 class="font-bold text-white text-sm sm:text-base mt-1">Pineapple Flavoured</h3>
+                                    <h3 class="font-bold text-white text-xs sm:text-sm mt-1">Pineapple Flavoured</h3>
                                 </div>
                             </div>
                             <!-- Limbuz Pani Preview Card -->
-                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center flex flex-col items-center">
+                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-2xl text-center flex flex-col items-center">
                                 ${renderBottleGraphic('nimbupani')}
                                 <div class="mt-2">
                                     <span class="bg-yellow-400 text-slate-900 text-xs font-bold px-2.5 py-0.5 rounded-full">₹10 | Sugar Free</span>
-                                    <h3 class="font-bold text-white text-sm sm:text-base mt-1">Limbuz Pani Lemon</h3>
+                                    <h3 class="font-bold text-white text-xs sm:text-sm mt-1">Limbuz Pani Lemon</h3>
+                                </div>
+                            </div>
+                            <!-- Kokkam Preview Card - now properly placed beside Limbuz Pani -->
+                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-2xl text-center flex flex-col items-center">
+                                ${renderBottleGraphic('kokkam')}
+                                <div class="mt-2">
+                                    <span class="bg-rose-400 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">₹10 | Sugar Free</span>
+                                    <h3 class="font-bold text-white text-xs sm:text-sm mt-1">Kokkam Flavoured</h3>
                                 </div>
                             </div>
                         </div>
@@ -475,7 +550,7 @@
                                 <i class="fa-solid fa-ban"></i>
                             </div>
                             <h3 class="font-bold text-lg text-slate-800">100% Sugar Free</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Enjoy full fruit flavor without calorie guilt. Our Pineapple and Limbuz Pani beverages are formulated sugar-free.</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">Enjoy full fruit flavor without calorie guilt. Our Pineapple, Limbuz Pani, and Kokkam beverages are formulated sugar-free.</p>
                         </div>
 
                         <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition text-center space-y-3">
