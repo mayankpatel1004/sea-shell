@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEA Shells - Packaged Drinking Water & Flavoured Drinks</title>
-    
-    <!-- Favicon SVG Data URI -->
-    <link id="favicon-link" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23003366'/><path d='M50 20 C35 20 25 35 25 55 C25 72 35 82 50 82 C65 82 75 72 75 55 C75 35 65 20 50 20 Z' fill='none' stroke='%2300A8FF' stroke-width='5'/><path d='M50 82 L50 20 M50 82 C40 60 35 40 38 25 M50 82 C60 60 65 40 62 25' fill='none' stroke='%2300A8FF' stroke-width='4'/><circle cx='50' cy='50' r='8' fill='%23FFD100'/></svg>">
+    <title>SEA Shells - Pure Mineral Water & Sugar-Free Flavoured Beverages</title>
+
+    <!-- Favicon SVG Data URI - Horizontal Single-Line Green Badge -->
+    <link id="favicon-link" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect width='120' height='120' rx='28' fill='%230b5e28'/><path d='M18 55 H42 M18 55 L28 28 H38 L28 55 M32 43 H42' stroke='white' stroke-width='4.5' stroke-linecap='round' fill='none'/><text x='48' y='55' fill='white' font-family='Arial, sans-serif' font-weight='900' font-size='26'>SEA</text><text x='48' y='85' fill='white' font-family='Georgia, serif' font-style='italic' font-weight='bold' font-size='22'>Shells</text><circle cx='98' cy='38' r='6' fill='%23FFD100'/></svg>">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Caveat:wght@600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -23,19 +23,20 @@
                 extend: {
                     colors: {
                         brand: {
-                            deep: '#003366',
-                            blue: '#0055A5',
-                            light: '#00A8FF',
-                            sky: '#E6F4FE',
-                            yellow: '#FFD100',
-                            pineapple: '#FFB800',
-                            lime: '#2ED573',
-                            dark: '#0F172A'
+                            green: '#0b5e28',
+                            darkgreen: '#073d1a',
+                            lightgreen: '#15803d',
+                            lime: '#22c55e',
+                            ocean: '#0055a5',
+                            sky: '#00a8ff',
+                            yellow: '#ffd100',
+                            pineapple: '#ffb800'
                         }
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif']
+                        serif: ['"Playfair Display"', 'serif'],
+                        script: ['"Caveat"', 'cursive']
                     }
                 }
             }
@@ -43,29 +44,29 @@
     </script>
 
     <style>
-        .gradient-ocean {
-            background: linear-gradient(135deg, #002244 0%, #0055A5 50%, #00A8FF 100%);
+        .gradient-brand {
+            background: linear-gradient(135deg, #073d1a 0%, #0b5e28 55%, #0055a5 100%);
         }
         .tab-btn.active {
-            color: #0055A5;
-            border-bottom: 3px solid #0055A5;
-            font-weight: 700;
+            color: #0b5e28;
+            border-bottom: 3px solid #0b5e28;
+            font-weight: 800;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-brand-light selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-brand-green selection:text-white">
 
     <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-brand-deep text-white text-xs md:text-sm py-2 px-4 shadow-inner">
+    <div class="bg-brand-darkgreen text-white text-xs md:text-sm py-2 px-4 shadow-inner">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2 md:px-6">
             <div class="flex items-center space-x-4">
-                <span class="flex items-center"><i class="fa-solid fa-shield-halved text-brand-yellow mr-1.5"></i> FSSAI Certified Packaged Water & Flavoured Drinks</span>
-                <span class="hidden md:inline-block text-slate-400">|</span>
-                <span class="hidden md:inline-flex items-center"><i class="fa-solid fa-droplet text-brand-light mr-1.5"></i> Added Minerals & Sugar-Free Flavours</span>
+                <span class="flex items-center"><i class="fa-solid fa-shield-halved text-brand-yellow mr-1.5"></i> FSSAI Certified Water & Flavoured Beverages</span>
+                <span class="hidden md:inline-block text-emerald-300">|</span>
+                <span class="hidden md:inline-flex items-center"><i class="fa-solid fa-droplet text-brand-sky mr-1.5"></i> Added Minerals & Sugar-Free Flavours</span>
             </div>
             <div class="flex items-center space-x-4 text-xs">
                 <a href="tel:9763712496" class="hover:text-brand-yellow transition"><i class="fa-solid fa-phone mr-1"></i> 9763712496</a>
-                <a href="mailto:Seashellswater@gmail.com" class="hover:text-brand-yellow transition hidden sm:inline-block"><i class="fa-solid fa-envelope mr-1"></i> Seashellswater@gmail.com</a>
+                <a href="mailto:Seashellswater@gamil.com" class="hover:text-brand-yellow transition hidden sm:inline-block"><i class="fa-solid fa-envelope mr-1"></i> Seashellswater@gamil.com</a>
             </div>
         </div>
     </div>
@@ -75,42 +76,58 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
-                <!-- BRAND LOGO WITH INLINE SVG -->
+                <!-- BRAND LOGO WITH HORIZONTAL SINGLE-LINE LAYOUT -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                    <div class="w-12 h-12 flex-shrink-0">
-                        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md">
-                            <defs>
-                                <linearGradient id="logoGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#003366" />
-                                    <stop offset="100%" stop-color="#00A8FF" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="100" cy="100" r="90" fill="url(#logoGradNav)"/>
-                            <path d="M100 40 C70 40 50 70 50 110 C50 140 70 160 100 160 C130 160 150 140 150 110 C150 70 130 40 100 40 Z" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
-                            <path d="M100 160 L100 40 M100 160 C80 120 70 80 75 50 M100 160 C120 120 130 80 125 50 M100 160 C65 140 55 100 60 70 M100 160 C135 140 145 100 140 70" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M100 20 C100 20 85 45 85 55 A15 15 0 0 0 115 55 C115 45 100 20 100 20 Z" fill="#FFD100"/>
+                    <div class="h-14 w-auto flex-shrink-0">
+                        <!-- SVG Horizontal Single-Line Green Badge Logo -->
+                        <svg viewBox="0 0 380 90" class="h-full w-auto drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Green Badge Rect Background -->
+                            <rect x="0" y="0" width="380" height="90" rx="14" fill="#0b5e28"/>
+                            
+                            <!-- Fan Shell Rays Graphic Background Effect (Low opacity) -->
+                            <g opacity="0.1" fill="none" stroke="#FFFFFF" stroke-width="1.5">
+                                <path d="M40 80 L10 10 M40 80 L30 5 M40 80 L60 5 M40 80 L90 5 M40 80 L120 10 M40 80 L150 15" />
+                            </g>
+
+                            <!-- BOLD WHITE "SEA" WITH INTEGRATED SHELL GRAPHIC IN 'A' -->
+                            <g fill="#FFFFFF">
+                                <!-- Letter S -->
+                                <path d="M 28 26 C 28 18, 45 16, 47 27 C 48 35, 29 37, 30 46 C 31 56, 51 54, 51 47" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <!-- Letter E -->
+                                <path d="M 60 20 H 80 M 60 20 V 51 H 80 M 60 35 H 76" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <!-- Letter A with Stylized Shell Shell inside -->
+                                <path d="M 92 51 L 107 20 L 122 51 M 97 40 H 117" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                
+                                <!-- Shell Artwork inside Letter A -->
+                                <g transform="translate(101, 24) scale(0.3)">
+                                    <path d="M20 35 C10 35 0 25 0 15 C0 5 10 0 20 0 C30 0 40 5 40 15 C40 25 30 35 20 35 Z" fill="#0b5e28" stroke="#FFFFFF" stroke-width="3"/>
+                                    <path d="M20 35 L20 0 M20 35 L8 5 M20 35 L32 5 M20 35 L2 18 M20 35 L38 18" stroke="#FFFFFF" stroke-width="2"/>
+                                </g>
+                            </g>
+
+                            <!-- TM Mark -->
+                            <text x="127" y="22" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800">TM</text>
+
+                            <!-- CURSIVE SCRIPT "Shells" DIRECTLY ON THE SAME HORIZONTAL LINE -->
+                            <text x="145" y="48" fill="#FFFFFF" font-family="'Caveat', 'Georgia', cursive" font-size="44" font-weight="700" font-style="italic">Shells</text>
+
+                            <!-- SUBTITLE: "A Brand Owned By Sumeet Hinduja" NEATLY UNDERNEATH -->
+                            <text x="190" y="72" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="0.5">A Brand Owned By Sumeet Hinduja</text>
                         </svg>
-                    </div>
-                    <div>
-                        <div class="flex items-baseline space-x-1">
-                            <span class="text-2xl font-black tracking-wider text-brand-deep font-sans">SEA</span>
-                            <span class="text-xl font-serif italic text-brand-blue font-semibold">Shells</span>
-                        </div>
-                        <p class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold leading-tight">A Brand Owned By Sumeet Hinduja</p>
                     </div>
                 </div>
 
-                <!-- NAVIGATION (ONLY 4 LINKS) -->
-                <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
-                    <button onclick="switchTab('home')" id="nav-home" class="tab-btn active py-2 transition hover:text-brand-blue">Home</button>
-                    <button onclick="switchTab('about')" id="nav-about" class="tab-btn py-2 transition hover:text-brand-blue">About Us</button>
-                    <button onclick="switchTab('products')" id="nav-products" class="tab-btn py-2 transition hover:text-brand-blue">Products</button>
-                    <button onclick="switchTab('contact')" id="nav-contact" class="tab-btn py-2 transition hover:text-brand-blue">Contact Us</button>
+                <!-- NAVIGATION -->
+                <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-700">
+                    <button onclick="switchTab('home')" id="nav-home" class="tab-btn active py-2 transition hover:text-brand-green">Home</button>
+                    <button onclick="switchTab('about')" id="nav-about" class="tab-btn py-2 transition hover:text-brand-green">About Us</button>
+                    <button onclick="switchTab('products')" id="nav-products" class="tab-btn py-2 transition hover:text-brand-green">Products</button>
+                    <button onclick="switchTab('contact')" id="nav-contact" class="tab-btn py-2 transition hover:text-brand-green">Contact Us</button>
                 </nav>
 
-                <!-- CALL ACTION -->
+                <!-- CALL ACTION BUTTON -->
                 <div class="hidden lg:flex items-center">
-                    <a href="tel:9763712496" class="bg-brand-blue hover:bg-brand-deep text-white px-5 py-2.5 rounded-full font-semibold text-sm transition shadow-md hover:shadow-lg flex items-center space-x-2">
+                    <a href="tel:9763712496" class="bg-brand-green hover:bg-brand-darkgreen text-white px-5 py-2.5 rounded-full font-bold text-sm transition shadow-md hover:shadow-lg flex items-center space-x-2">
                         <i class="fa-solid fa-phone-volume"></i>
                         <span>Order Bulk Water</span>
                     </a>
@@ -118,7 +135,7 @@
 
                 <!-- MOBILE MENU BUTTON -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-brand-blue p-2 rounded-lg focus:outline-none">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-brand-green p-2 rounded-lg focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -127,12 +144,12 @@
 
         <!-- MOBILE MENU CONTAINER -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-md">Home</button>
-            <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-md">About Us</button>
-            <button onclick="switchTab('products'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-md">Products</button>
-            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-md">Contact Us</button>
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-emerald-50 rounded-md">Home</button>
+            <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-emerald-50 rounded-md">About Us</button>
+            <button onclick="switchTab('products'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-emerald-50 rounded-md">Products</button>
+            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-base font-semibold text-slate-700 hover:bg-emerald-50 rounded-md">Contact Us</button>
             <div class="pt-2">
-                <a href="tel:9763712496" class="w-full bg-brand-blue text-white text-center py-2.5 rounded-lg font-semibold block shadow">
+                <a href="tel:9763712496" class="w-full bg-brand-green text-white text-center py-2.5 rounded-lg font-bold block shadow">
                     <i class="fa-solid fa-phone mr-2"></i> Call Now: 9763712496
                 </a>
             </div>
@@ -145,64 +162,67 @@
         <!-- ================= HOME PAGE ================= -->
         <section id="page-home" class="page-content">
             <!-- HERO SECTION -->
-            <div class="relative gradient-ocean text-white py-20 lg:py-28 overflow-hidden">
+            <div class="relative gradient-brand text-white py-20 lg:py-28 overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="grid md:grid-cols-2 gap-12 items-center">
                         <div class="space-y-6 text-center md:text-left">
                             <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-white/30">
-                                <i class="fa-solid fa-award text-brand-yellow mr-1"></i> Premium Quality Refreshment
+                                <i class="fa-solid fa-award text-brand-yellow mr-1"></i> Premium Packaged Water & Sugar-Free Drinks
                             </span>
                             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                                Pure Hydration. <br>
-                                <span class="text-brand-yellow font-serif italic">Refreshing Flavours.</span>
+                                Pure Mineral Hydration. <br>
+                                <span class="text-brand-yellow font-serif italic">Refreshing Flavors.</span>
                             </h1>
-                            <p class="text-slate-200 text-base sm:text-lg max-w-xl font-light leading-relaxed">
-                                Experience 100% pure packaged drinking water enriched with added minerals, alongside our delicious, guilt-free <strong>Sugar-Free Pineapple & Limbuz Pani</strong> flavoured drinks.
+                            <p class="text-emerald-100 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+                                Experience 100% pure packaged drinking water enriched with added minerals, alongside our delicious, guilt-free <strong>Sugar-Free Pineapple & Limbuz Pani</strong> flavoured drinks at just ₹10.
                             </p>
                             <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 pt-4">
-                                <button onclick="switchTab('products')" class="bg-brand-yellow hover:bg-yellow-400 text-brand-deep px-8 py-3.5 rounded-full font-bold text-base shadow-lg transition transform hover:-translate-y-0.5">
+                                <button onclick="switchTab('products')" class="bg-brand-yellow hover:bg-yellow-400 text-slate-900 px-8 py-3.5 rounded-full font-black text-base shadow-lg transition transform hover:-translate-y-0.5">
                                     Explore Products
                                 </button>
                                 <button onclick="switchTab('about')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold text-base backdrop-blur-sm transition">
-                                    Our Story & Quality
+                                    Our Quality Process
                                 </button>
                             </div>
                         </div>
 
-                        <!-- HERO DISPLAY BOTTLES -->
+                        <!-- HERO BOTTLE CARDS -->
                         <div class="relative flex justify-center items-center">
                             <div class="grid grid-cols-2 gap-4 max-w-sm w-full">
+                                <!-- Packaged Water Card -->
                                 <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl text-center shadow-2xl">
                                     <div class="h-44 flex items-center justify-center mb-3">
                                         <svg viewBox="0 0 100 200" class="h-full drop-shadow-xl">
                                             <rect x="35" y="10" width="30" height="15" rx="3" fill="#00A8FF" />
                                             <path d="M40 25 L60 25 L65 40 L35 40 Z" fill="#E2E8F0" />
                                             <rect x="25" y="40" width="50" height="150" rx="10" fill="rgba(255,255,255,0.7)" stroke="#00A8FF" stroke-width="2"/>
-                                            <rect x="25" y="70" width="50" height="50" fill="#003366" />
-                                            <text x="50" y="95" fill="#FFFFFF" font-size="10" font-weight="bold" text-anchor="middle">SEA</text>
-                                            <text x="50" y="105" fill="#00A8FF" font-size="8" font-style="italic" text-anchor="middle">Shells</text>
+                                            <!-- Horizontal Green Logo Label -->
+                                            <rect x="25" y="75" width="50" height="35" fill="#0b5e28" />
+                                            <text x="50" y="93" fill="#FFFFFF" font-size="8" font-weight="bold" text-anchor="middle">SEA Shells</text>
                                             <path d="M26 120 Q50 115 74 120 L74 185 Q50 190 26 185 Z" fill="#00A8FF" opacity="0.4"/>
                                         </svg>
                                     </div>
-                                    <span class="bg-brand-light text-white text-xs font-bold px-2.5 py-1 rounded-full inline-block">Packaged Water</span>
+                                    <span class="bg-brand-sky text-slate-900 text-xs font-extrabold px-2.5 py-1 rounded-full inline-block">Packaged Water</span>
                                     <h3 class="font-bold text-white text-sm mt-2">Added Minerals</h3>
                                 </div>
 
+                                <!-- Limbuz Pani Card -->
                                 <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl text-center shadow-2xl translate-y-6">
                                     <div class="h-44 flex items-center justify-center mb-3">
                                         <svg viewBox="0 0 100 200" class="h-full drop-shadow-xl">
-                                            <rect x="35" y="10" width="30" height="15" rx="3" fill="#2ED573" />
+                                            <rect x="35" y="10" width="30" height="15" rx="3" fill="#22C55E" />
                                             <path d="M40 25 L60 25 L65 40 L35 40 Z" fill="#E2E8F0" />
-                                            <rect x="25" y="40" width="50" height="150" rx="10" fill="rgba(255,230,0,0.8)" stroke="#2ED573" stroke-width="2"/>
-                                            <rect x="25" y="65" width="50" height="45" fill="#15803D" />
-                                            <text x="50" y="85" fill="#FFFFFF" font-size="8" font-weight="bold" text-anchor="middle">Limbuz Pani</text>
-                                            <text x="50" y="98" fill="#FFD100" font-size="6" text-anchor="middle">Lemon Flavoured</text>
+                                            <rect x="25" y="40" width="50" height="150" rx="10" fill="rgba(255,230,0,0.85)" stroke="#22C55E" stroke-width="2"/>
+                                            <!-- Horizontal Green Logo Label -->
+                                            <rect x="25" y="70" width="50" height="35" fill="#0b5e28" />
+                                            <text x="50" y="85" fill="#FFFFFF" font-size="7" font-weight="bold" text-anchor="middle">SEA Shells</text>
+                                            <text x="50" y="96" fill="#FFD100" font-size="5.5" font-weight="bold" text-anchor="middle">Limbuz Pani</text>
                                             <circle cx="50" cy="140" r="14" fill="#FFD100" />
-                                            <text x="50" y="143" fill="#000" font-size="7" font-weight="bold" text-anchor="middle">₹10</text>
+                                            <text x="50" y="143" fill="#000" font-size="7" font-weight="black" text-anchor="middle">₹10</text>
                                         </svg>
                                     </div>
-                                    <span class="bg-brand-yellow text-brand-deep text-xs font-bold px-2.5 py-1 rounded-full inline-block">Flavoured Drinks</span>
-                                    <h3 class="font-bold text-white text-sm mt-2">Sugar Free @ ₹10</h3>
+                                    <span class="bg-brand-yellow text-slate-900 text-xs font-extrabold px-2.5 py-1 rounded-full inline-block">Sugar Free Drink</span>
+                                    <h3 class="font-bold text-white text-sm mt-2">Limbuz Pani @ ₹10</h3>
                                 </div>
                             </div>
                         </div>
@@ -210,89 +230,91 @@
                 </div>
             </div>
 
-            <!-- KEY FEATURES HIGHLIGHT SECTION -->
+            <!-- KEY FEATURES SECTION -->
             <div class="py-16 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-2xl mx-auto mb-12">
-                        <h2 class="text-xs uppercase tracking-widest font-extrabold text-brand-blue mb-2">Why Choose SEA Shells</h2>
-                        <p class="text-3xl font-extrabold text-slate-900">Engineered for Purity & Great Taste</p>
+                        <h2 class="text-xs uppercase tracking-widest font-extrabold text-brand-green mb-2">Why Choose SEA Shells</h2>
+                        <p class="text-3xl font-extrabold text-slate-900">Engineered for Purity & Natural Refreshment</p>
                     </div>
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition duration-300">
-                            <div class="w-12 h-12 bg-blue-100 text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-4">
+                        <div class="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-100 hover:shadow-xl transition duration-300">
+                            <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-xl flex items-center justify-center text-2xl mb-4">
                                 <i class="fa-solid fa-filter"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">Multi-Stage RO + UV</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Advanced multi-stage Reverse Osmosis and UV sterilization processes remove all contaminants for pristine purity.</p>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Multi-Stage RO+UV</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Advanced RO filtration and UV sterilization guarantee total biological safety and crystal purity.</p>
                         </div>
 
-                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition duration-300">
+                        <div class="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-100 hover:shadow-xl transition duration-300">
                             <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-2xl mb-4">
                                 <i class="fa-solid fa-flask text-2xl"></i>
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-2">Added Vital Minerals</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Enriched with essential minerals like Magnesium and Sodium for optimal hydration and a refreshing smooth taste.</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">Enriched with key essential minerals for optimal taste, pH balance, and healthy daily hydration.</p>
                         </div>
 
-                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition duration-300">
+                        <div class="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-100 hover:shadow-xl transition duration-300">
                             <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-4">
                                 <i class="fa-solid fa-ban text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">Guilt-Free Sugar Free</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Our Pineapple and Limbuz Pani flavoured beverages offer vibrant taste with zero sugar overhead at just ₹10.</p>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Sugar-Free Drinks</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Our Pineapple and Limbuz Pani beverages deliver rich natural taste with zero sugar overhead at ₹10.</p>
                         </div>
 
-                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition duration-300">
-                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-4">
+                        <div class="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-100 hover:shadow-xl transition duration-300">
+                            <div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-2xl mb-4">
                                 <i class="fa-solid fa-certificate"></i>
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-2">FSSAI Certified</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Fully compliant with standard quality controls (FSSAI Lic No: 2152080000805 & 11526071000162).</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">Strict adherence to national quality standards (FSSAI Lic No: 2152080000805 / 11526071000162).</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- FEATURED PRODUCTS PREVIEW -->
+            <!-- FEATURED PRODUCTS SECTION -->
             <div class="py-16 bg-slate-50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                         <div>
-                            <span class="text-brand-blue font-bold text-xs uppercase tracking-wider">Our Core Offerings</span>
-                            <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Featured Products</h2>
+                            <span class="text-brand-green font-bold text-xs uppercase tracking-wider">Our Core Range</span>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Featured Beverages</h2>
                         </div>
-                        <button onclick="switchTab('products')" class="mt-4 md:mt-0 text-brand-blue font-bold hover:text-brand-deep flex items-center gap-2 transition">
-                            View All Sizes & Products <i class="fa-solid fa-arrow-right"></i>
+                        <button onclick="switchTab('products')" class="mt-4 md:mt-0 text-brand-green font-bold hover:text-brand-darkgreen flex items-center gap-2 transition">
+                            View Full Product Catalog <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
 
                     <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Packaged Water -->
                         <div class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-slate-100 flex flex-col justify-between">
-                            <div class="p-6 bg-gradient-to-b from-blue-50 to-white text-center relative">
-                                <span class="absolute top-4 right-4 bg-brand-deep text-white text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-full">All Sizes</span>
+                            <div class="p-6 bg-gradient-to-b from-emerald-50 to-white text-center relative">
+                                <span class="absolute top-4 right-4 bg-brand-green text-white text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-full">All Sizes</span>
                                 <div class="h-56 flex items-center justify-center py-4">
-                                    <i class="fa-solid fa-bottle-water text-8xl text-brand-blue/80"></i>
+                                    <i class="fa-solid fa-bottle-water text-8xl text-brand-green"></i>
                                 </div>
                             </div>
                             <div class="p-6">
                                 <h3 class="text-xl font-extrabold text-slate-900">Packaged Drinking Water</h3>
-                                <p class="text-xs text-brand-blue font-semibold mt-1">With Added Minerals</p>
-                                <p class="text-slate-600 text-sm mt-3 leading-relaxed">Available in 200ml, 250ml, 500ml, 1 Litre, and 2 Litre bottles.</p>
+                                <p class="text-xs text-brand-green font-bold mt-1">With Added Minerals</p>
+                                <p class="text-slate-600 text-sm mt-3 leading-relaxed">Available in 200ml, 250ml, 500ml, 1 Litre, and 2 Litre convenient bottle sizes.</p>
                                 <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                                     <span class="text-xs font-medium text-slate-500">Sizes: 200ml - 2L</span>
-                                    <button onclick="switchTab('products')" class="bg-slate-100 hover:bg-brand-blue hover:text-white text-slate-700 px-4 py-2 rounded-lg font-bold text-xs transition">Details</button>
+                                    <button onclick="switchTab('products')" class="bg-slate-100 hover:bg-brand-green hover:text-white text-slate-700 px-4 py-2 rounded-lg font-bold text-xs transition">Details</button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Limbuz Pani -->
                         <div class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-slate-100 flex flex-col justify-between">
-                            <div class="p-6 bg-gradient-to-b from-emerald-50 to-white text-center relative">
+                            <div class="p-6 bg-gradient-to-b from-yellow-50 to-white text-center relative">
                                 <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Sugar Free</span>
                                 <div class="h-56 flex items-center justify-center py-4">
                                     <div class="relative">
-                                        <i class="fa-solid fa-glass-water-droplet text-8xl text-emerald-500"></i>
-                                        <i class="fa-solid fa-lemon text-4xl text-amber-400 absolute -bottom-2 -right-2"></i>
+                                        <i class="fa-solid fa-glass-water-droplet text-8xl text-amber-500"></i>
+                                        <i class="fa-solid fa-lemon text-4xl text-emerald-600 absolute -bottom-2 -right-2"></i>
                                     </div>
                                 </div>
                             </div>
@@ -300,7 +322,7 @@
                                 <div class="flex justify-between items-start">
                                     <div>
                                         <h3 class="text-xl font-extrabold text-slate-900">Limbuz Pani</h3>
-                                        <p class="text-xs text-emerald-600 font-semibold mt-1">Lemon Flavoured Drink</p>
+                                        <p class="text-xs text-emerald-600 font-bold mt-1">Lemon Flavoured Drink</p>
                                     </div>
                                     <span class="text-2xl font-black text-slate-900">₹10</span>
                                 </div>
@@ -312,18 +334,19 @@
                             </div>
                         </div>
 
+                        <!-- Pineapple Drink -->
                         <div class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-slate-100 flex flex-col justify-between">
                             <div class="p-6 bg-gradient-to-b from-amber-50 to-white text-center relative">
                                 <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Sugar Free</span>
                                 <div class="h-56 flex items-center justify-center py-4">
-                                    <i class="fa-solid fa-bottle-droplet text-8xl text-amber-500"></i>
+                                    <i class="fa-solid fa-wine-bottle text-8xl text-amber-500"></i>
                                 </div>
                             </div>
                             <div class="p-6">
                                 <div class="flex justify-between items-start">
                                     <div>
                                         <h3 class="text-xl font-extrabold text-slate-900">Pineapple Drink</h3>
-                                        <p class="text-xs text-amber-600 font-semibold mt-1">Pineapple Flavoured Drink</p>
+                                        <p class="text-xs text-amber-600 font-bold mt-1">Pineapple Flavoured Drink</p>
                                     </div>
                                     <span class="text-2xl font-black text-slate-900">₹10</span>
                                 </div>
@@ -339,14 +362,14 @@
             </div>
 
             <!-- CALL TO ACTION BANNER -->
-            <div class="bg-brand-deep py-12 text-white">
+            <div class="bg-brand-darkgreen py-12 text-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:items-center sm:justify-between">
                     <div class="text-center sm:text-left mb-6 sm:mb-0">
-                        <h3 class="text-2xl font-extrabold">Looking for Wholesale or Retail Distribution?</h3>
-                        <p class="text-slate-300 text-sm mt-1">Get in touch with Suman Enterprises for bulk supply in Maharashtra.</p>
+                        <h3 class="text-2xl font-extrabold">Looking for Wholesale or Bulk Distribution Supply?</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Get in touch directly with Suman Enterprises for bulk supply across Maharashtra.</p>
                     </div>
-                    <button onclick="switchTab('contact')" class="bg-brand-yellow hover:bg-yellow-400 text-brand-deep font-extrabold px-8 py-3.5 rounded-full transition shadow-lg">
-                        Contact Distribution <i class="fa-solid fa-arrow-right ml-2"></i>
+                    <button onclick="switchTab('contact')" class="bg-brand-yellow hover:bg-yellow-400 text-slate-900 font-extrabold px-8 py-3.5 rounded-full transition shadow-lg">
+                        View Contact Info <i class="fa-solid fa-arrow-right ml-2"></i>
                     </button>
                 </div>
             </div>
@@ -354,11 +377,11 @@
 
         <!-- ================= ABOUT US PAGE ================= -->
         <section id="page-about" class="page-content hidden">
-            <div class="bg-slate-900 text-white py-16">
+            <div class="bg-brand-darkgreen text-white py-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <span class="text-brand-light uppercase text-xs tracking-widest font-bold">About Our Company</span>
-                    <h1 class="text-4xl font-extrabold mt-2">Purity You Can Trust</h1>
-                    <p class="text-slate-400 text-sm max-w-xl mx-auto mt-2">Owned by Sumeet Hinduja and distributed by Suman Enterprises.</p>
+                    <span class="text-brand-yellow uppercase text-xs tracking-widest font-bold">About Our Brand</span>
+                    <h1 class="text-4xl font-extrabold mt-2">Purity & Refreshment You Can Rely On</h1>
+                    <p class="text-emerald-200 text-sm max-w-xl mx-auto mt-2">Owned by Sumeet Hinduja & Distributed by Suman Enterprises.</p>
                 </div>
             </div>
 
@@ -367,18 +390,18 @@
                     
                     <div class="grid md:grid-cols-2 gap-12 items-center">
                         <div class="space-y-4">
-                            <div class="inline-block bg-blue-50 text-brand-blue font-bold text-xs px-3 py-1 rounded-full uppercase">Brand Overview</div>
-                            <h2 class="text-3xl font-extrabold text-slate-900">The SEA Shells Legacy</h2>
+                            <div class="inline-block bg-emerald-50 text-brand-green font-bold text-xs px-3 py-1 rounded-full uppercase">Brand Overview</div>
+                            <h2 class="text-3xl font-extrabold text-slate-900">The SEA Shells Story</h2>
                             <p class="text-slate-600 text-sm leading-relaxed">
-                                <strong>SEA Shells</strong> is a premier brand dedicated to delivering clean, safe, and healthy drinking water alongside nutritious flavoured beverages. Owned by <strong>Sumeet Hinduja</strong>, the brand stands for stringent quality control, ultra-pure water treatment, and consumer satisfaction.
+                                <strong>SEA Shells</strong> is a premier brand dedicated to manufacturing safe, mineral-enriched packaged drinking water and guilt-free sugar-free flavoured beverages. Owned by <strong>Sumeet Hinduja</strong>, the brand represents uncompromising quality and hydration perfection.
                             </p>
                             <p class="text-slate-600 text-sm leading-relaxed">
-                                Marketed by <strong>Suman Enterprises</strong> in Pune, Maharashtra, SEA Shells caters to institutional, commercial, retail, and household drinking water needs across the region.
+                                Distributed and marketed by <strong>Suman Enterprises</strong> based in Pune, Maharashtra, SEA Shells caters to institutional, retail, commercial, and personal beverage requirements.
                             </p>
                         </div>
-                        <div class="bg-gradient-to-br from-blue-50 to-slate-100 p-8 rounded-3xl border border-slate-200 space-y-4 shadow-sm">
+                        <div class="bg-gradient-to-br from-emerald-50 to-slate-50 p-8 rounded-3xl border border-emerald-100 space-y-4 shadow-sm">
                             <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
-                                <i class="fa-solid fa-building text-brand-blue"></i> Corporate Profile
+                                <i class="fa-solid fa-building text-brand-green"></i> Corporate Structure
                             </h3>
                             <ul class="space-y-3 text-sm text-slate-700">
                                 <li class="flex justify-between border-b border-slate-200 pb-2">
@@ -390,16 +413,16 @@
                                     <span class="font-semibold">SUMAN ENTERPRISES</span>
                                 </li>
                                 <li class="flex justify-between border-b border-slate-200 pb-2">
-                                    <span class="text-slate-500">Head Office:</span>
+                                    <span class="text-slate-500">Headquarters:</span>
                                     <span class="font-semibold text-right">Rose Parade, NIBM, Pune</span>
                                 </li>
                                 <li class="flex justify-between border-b border-slate-200 pb-2">
                                     <span class="text-slate-500">Manufacturer:</span>
-                                    <span class="font-semibold text-right">Mexer Foods & Beverages Pvt. Ltd.</span>
+                                    <span class="font-semibold text-right">Mexer Foods And Beverages Pvt. Ltd.</span>
                                 </li>
                                 <li class="flex justify-between">
                                     <span class="text-slate-500">FSSAI License:</span>
-                                    <span class="font-semibold text-brand-blue">2152080000805</span>
+                                    <span class="font-semibold text-brand-green">2152080000805</span>
                                 </li>
                             </ul>
                         </div>
@@ -407,41 +430,41 @@
 
                     <div class="border-t border-slate-200 pt-16">
                         <div class="text-center max-w-2xl mx-auto mb-12">
-                            <h2 class="text-2xl font-extrabold text-slate-900">Our Purification Process</h2>
-                            <p class="text-slate-600 text-sm mt-1">Every drop passes through a rigorous multi-tier purification system.</p>
+                            <h2 class="text-2xl font-extrabold text-slate-900">Purification & Processing Standards</h2>
+                            <p class="text-slate-600 text-sm mt-1">Multi-stage purification ensures absolute purity in every bottle.</p>
                         </div>
 
                         <div class="grid sm:grid-cols-3 gap-6">
                             <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
-                                <div class="w-12 h-12 bg-blue-500 text-white font-black rounded-full flex items-center justify-center mx-auto mb-4 text-lg">1</div>
-                                <h3 class="font-bold text-slate-900 mb-1">Micro Filtration & RO</h3>
-                                <p class="text-xs text-slate-600">Filters out microscopic suspended particles and heavy dissolved solids.</p>
+                                <div class="w-12 h-12 bg-emerald-600 text-white font-black rounded-full flex items-center justify-center mx-auto mb-4 text-lg">1</div>
+                                <h3 class="font-bold text-slate-900 mb-1">RO Filtration</h3>
+                                <p class="text-xs text-slate-600">Eliminates dissolved solids, heavy metals, and physical impurities.</p>
                             </div>
                             <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
-                                <div class="w-12 h-12 bg-blue-600 text-white font-black rounded-full flex items-center justify-center mx-auto mb-4 text-lg">2</div>
-                                <h3 class="font-bold text-slate-900 mb-1">UV Sterilization</h3>
-                                <p class="text-xs text-slate-600">Eliminates harmful microbes, bacteria, and viruses for complete microbial safety.</p>
+                                <div class="w-12 h-12 bg-brand-green text-white font-black rounded-full flex items-center justify-center mx-auto mb-4 text-lg">2</div>
+                                <h3 class="font-bold text-slate-900 mb-1">UV Treatment</h3>
+                                <p class="text-xs text-slate-600">Destroys bacteria and viruses guaranteeing complete microbiological purity.</p>
                             </div>
                             <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
-                                <div class="w-12 h-12 bg-brand-deep text-white font-black rounded-full flex items-center justify-center mx-auto mb-4 text-lg">3</div>
-                                <h3 class="font-bold text-slate-900 mb-1">Mineral Infusion</h3>
-                                <p class="text-xs text-slate-600">Adds controlled doses of essential minerals to balance pH and enhance natural taste.</p>
+                                <div class="w-12 h-12 bg-brand-darkgreen text-white font-black rounded-full flex items-center justify-center mx-auto mb-4 text-lg">3</div>
+                                <h3 class="font-bold text-slate-900 mb-1">Mineral Enriched</h3>
+                                <p class="text-xs text-slate-600">Enriched with optimal minerals to improve pH balance and taste.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-brand-deep text-white p-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="bg-brand-green text-white p-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
                         <div class="space-y-2 text-center md:text-left">
                             <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold text-brand-yellow">
-                                <i class="fa-solid fa-certificate"></i> Compliance & Regulatory Approval
+                                <i class="fa-solid fa-certificate"></i> Approved Quality Assurance
                             </div>
-                            <h3 class="text-2xl font-extrabold">FSSAI Certified Manufacturing</h3>
-                            <p class="text-xs text-slate-300 max-w-lg">Manufactured at modern facilities adhering strictly to state and national food safety standards under FSSAI regulations.</p>
+                            <h3 class="text-2xl font-extrabold">FSSAI Certified Facilities</h3>
+                            <p class="text-xs text-emerald-100 max-w-lg">Bottled at state-of-the-art facilities complying with food safety standards governed by FSSAI regulations.</p>
                         </div>
-                        <div class="bg-white text-slate-900 p-4 rounded-2xl text-center flex-shrink-0 w-full md:w-auto">
-                            <p class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Marketing License No.</p>
-                            <p class="text-lg font-black text-brand-deep tracking-wider">2152080000805</p>
-                            <p class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400 mt-2">Manufacturing License No.</p>
+                        <div class="bg-white text-slate-900 p-5 rounded-2xl text-center flex-shrink-0 w-full md:w-auto shadow-md">
+                            <p class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Marketing License</p>
+                            <p class="text-lg font-black text-brand-green tracking-wider">2152080000805</p>
+                            <p class="text-[10px] uppercase tracking-wider font-extrabold text-slate-400 mt-2">Manufacturing License</p>
                             <p class="text-sm font-bold text-slate-700">11526071000162</p>
                         </div>
                     </div>
@@ -452,36 +475,36 @@
 
         <!-- ================= PRODUCTS PAGE ================= -->
         <section id="page-products" class="page-content hidden">
-            <div class="bg-slate-900 text-white py-16">
+            <div class="bg-brand-darkgreen text-white py-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span class="text-brand-yellow uppercase text-xs tracking-widest font-bold">Catalog</span>
-                    <h1 class="text-4xl font-extrabold mt-2">Our Beverage Range</h1>
-                    <p class="text-slate-400 text-sm max-w-xl mx-auto mt-2">Clean mineral water and refreshing sugar-free flavoured drinks.</p>
+                    <h1 class="text-4xl font-extrabold mt-2">Our Products Range</h1>
+                    <p class="text-emerald-200 text-sm max-w-xl mx-auto mt-2">Packaged mineral water and sugar-free flavoured drinks.</p>
                 </div>
             </div>
 
-            <div class="py-12 bg-white border-b border-slate-100">
+            <div class="py-12 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-center space-x-2 sm:space-x-4 mb-8">
-                        <button onclick="filterProducts('all')" id="filter-all" class="prod-filter-btn active bg-brand-deep text-white px-5 py-2 rounded-full font-bold text-xs sm:text-sm transition shadow-sm">All Products</button>
+                        <button onclick="filterProducts('all')" id="filter-all" class="prod-filter-btn active bg-brand-green text-white px-5 py-2 rounded-full font-bold text-xs sm:text-sm transition shadow-sm">All Products</button>
                         <button onclick="filterProducts('water')" id="filter-water" class="prod-filter-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-5 py-2 rounded-full font-bold text-xs sm:text-sm transition">Packaged Water</button>
                         <button onclick="filterProducts('flavoured')" id="filter-flavoured" class="prod-filter-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-5 py-2 rounded-full font-bold text-xs sm:text-sm transition">Flavoured Drinks</button>
                     </div>
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         
-                        <!-- PRODUCT 1: Packaged Water -->
+                        <!-- Packaged Water -->
                         <div class="prod-item water bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col justify-between">
                             <div class="p-6 bg-slate-50 text-center relative">
-                                <span class="bg-brand-blue text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full absolute top-4 left-4">Packaged Water</span>
+                                <span class="bg-brand-green text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full absolute top-4 left-4">Packaged Water</span>
                                 <div class="h-52 flex items-center justify-center my-2">
-                                    <i class="fa-solid fa-bottle-water text-8xl text-brand-blue"></i>
+                                    <i class="fa-solid fa-bottle-water text-8xl text-brand-green"></i>
                                 </div>
                             </div>
                             <div class="p-6">
                                 <h3 class="text-xl font-black text-slate-900">SEA Shells Drinking Water</h3>
-                                <p class="text-xs text-brand-blue font-bold mt-1">Packaged Water with Added Minerals</p>
-                                <p class="text-slate-600 text-xs mt-3 leading-relaxed">Multi-stage RO + UV treated pure drinking water with optimal mineral balance for daily hydration.</p>
+                                <p class="text-xs text-brand-green font-bold mt-1">Packaged Water with Added Minerals</p>
+                                <p class="text-slate-600 text-xs mt-3 leading-relaxed">Multi-stage RO + UV treated pure drinking water enriched with optimal mineral balance.</p>
                                 
                                 <div class="mt-4 bg-slate-50 p-3 rounded-xl">
                                     <span class="text-[11px] font-bold text-slate-500 uppercase block mb-1">Available Sizes:</span>
@@ -501,7 +524,7 @@
                             </div>
                         </div>
 
-                        <!-- PRODUCT 2: Limbuz Pani -->
+                        <!-- Limbuz Pani -->
                         <div class="prod-item flavoured bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col justify-between">
                             <div class="p-6 bg-yellow-50 text-center relative">
                                 <span class="bg-emerald-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full absolute top-4 left-4">Sugar Free</span>
@@ -538,7 +561,7 @@
                             </div>
                         </div>
 
-                        <!-- PRODUCT 3: Pineapple Drink -->
+                        <!-- Pineapple Drink -->
                         <div class="prod-item flavoured bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col justify-between">
                             <div class="p-6 bg-amber-50 text-center relative">
                                 <span class="bg-amber-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full absolute top-4 left-4">Sugar Free</span>
@@ -560,7 +583,7 @@
                                 <div class="mt-4 bg-slate-50 p-3 rounded-xl text-xs space-y-1">
                                     <div class="font-bold text-slate-700 text-[11px] border-b border-slate-200 pb-1 mb-1">Nutritional Info (per 100ml approx):</div>
                                     <div class="flex justify-between text-slate-600"><span>Energy:</span> <span class="font-semibold">20 kcal</span></div>
-                                    <div class="flex justify-between text-slate-600"><span>Carbohydrate:</span> <span class="font-semibold">4.95 g</span></div>
+                                    <div class="flex justify-between text-slate-600"><span>Carbohydrates:</span> <span class="font-semibold">4.95 g</span></div>
                                     <div class="flex justify-between text-slate-600"><span>Total Sugars:</span> <span class="font-semibold">4.90 g</span></div>
                                     <div class="flex justify-between text-slate-600"><span>Sodium:</span> <span class="font-semibold">70 mg</span></div>
                                 </div>
@@ -577,13 +600,13 @@
             </div>
         </section>
 
-        <!-- ================= CONTACT US PAGE (NO CONTACT FORM) ================= -->
+        <!-- ================= CONTACT US PAGE (STRICTLY NO CONTACT FORM) ================= -->
         <section id="page-contact" class="page-content hidden">
-            <div class="bg-slate-900 text-white py-16">
+            <div class="bg-brand-darkgreen text-white py-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <span class="text-brand-light uppercase text-xs tracking-widest font-bold">Get In Touch</span>
-                    <h1 class="text-4xl font-extrabold mt-2">Contact Details & Location</h1>
-                    <p class="text-slate-400 text-sm max-w-xl mx-auto mt-2">Connect directly with our distribution team for orders and inquiries.</p>
+                    <span class="text-brand-yellow uppercase text-xs tracking-widest font-bold">Get In Touch</span>
+                    <h1 class="text-4xl font-extrabold mt-2">Contact & Office Information</h1>
+                    <p class="text-emerald-200 text-sm max-w-xl mx-auto mt-2">Connect directly with our marketing & distribution team.</p>
                 </div>
             </div>
 
@@ -595,11 +618,11 @@
                         <div class="lg:col-span-1 space-y-6">
                             
                             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                                <div class="w-10 h-10 bg-blue-100 text-brand-blue rounded-xl flex items-center justify-center text-lg mb-4">
+                                <div class="w-10 h-10 bg-emerald-100 text-brand-green rounded-xl flex items-center justify-center text-lg mb-4">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
-                                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-2">Marketed By</h3>
-                                <p class="text-base font-bold text-brand-deep">SUMAN ENTERPRISES</p>
+                                <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider mb-2">Marketed By</h3>
+                                <p class="text-base font-bold text-brand-green">SUMAN ENTERPRISES</p>
                                 <p class="text-slate-600 text-sm mt-1 leading-relaxed">
                                     B1/201, Rose Parade, NIBM,<br>
                                     Pune, Maharashtra - 411048
@@ -607,61 +630,62 @@
                             </div>
 
                             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                                <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-lg mb-4">
+                                <div class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-lg mb-4">
                                     <i class="fa-solid fa-headset"></i>
                                 </div>
-                                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-2">Customer Care & Orders</h3>
+                                <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider mb-2">Customer Helpline</h3>
                                 <div class="space-y-3 text-sm">
                                     <div>
                                         <span class="text-xs text-slate-400 block font-semibold">Customer Care Number</span>
-                                        <a href="tel:9763712496" class="text-brand-blue font-bold text-lg hover:underline">9763712496</a>
+                                        <a href="tel:9763712496" class="text-brand-green font-bold text-xl hover:underline">9763712496</a>
                                     </div>
                                     <div>
-                                        <span class="text-xs text-slate-400 block font-semibold">Official Email</span>
-                                        <a href="mailto:Seashellswater@gmail.com" class="text-slate-700 font-semibold hover:text-brand-blue">Seashellswater@gmail.com</a>
+                                        <span class="text-xs text-slate-400 block font-semibold">Email Inquiry</span>
+                                        <a href="mailto:Seashellswater@gamil.com" class="text-slate-700 font-semibold hover:text-brand-green">Seashellswater@gamil.com</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                                 <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-lg mb-4">
-                                    <i class="fa-solid fa-id-card"></i>
+                                    <i class="fa-solid fa-industry"></i>
                                 </div>
-                                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-2">Manufacturing Details</h3>
+                                <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider mb-2">Manufactured By</h3>
                                 <p class="text-xs font-bold text-slate-800">Mexer Foods And Beverages Pvt. Ltd.</p>
                                 <p class="text-xs text-slate-600 mt-0.5">E-39, MIDC, Additional Patalganga, Raigad, Panvel, Maharashtra - 410 220</p>
                                 <div class="mt-3 pt-3 border-t border-slate-100 text-xs text-slate-500">
-                                    <span>FSSAI Lic No: <strong>2152080000805</strong></span>
+                                    <span>FSSAI Lic No: <strong>11526071000162</strong></span>
                                 </div>
                             </div>
 
                         </div>
 
+                        <!-- MAP DISPLAY AREA -->
                         <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
                             <div class="p-6 border-b border-slate-100 flex justify-between items-center">
                                 <div>
                                     <h3 class="font-extrabold text-slate-900 text-lg">Distribution Office Location</h3>
                                     <p class="text-xs text-slate-500">NIBM, Pune, Maharashtra</p>
                                 </div>
-                                <a href="https://maps.google.com/?q=Rose+Parade+NIBM+Pune" target="_blank" class="bg-brand-blue hover:bg-brand-deep text-white px-4 py-2 rounded-lg font-bold text-xs transition">
-                                    <i class="fa-solid fa-directions mr-1"></i> Get Directions
+                                <a href="https://maps.google.com/?q=Rose+Parade+NIBM+Pune" target="_blank" class="bg-brand-green hover:bg-brand-darkgreen text-white px-4 py-2 rounded-lg font-bold text-xs transition">
+                                    <i class="fa-solid fa-directions mr-1"></i> Open Google Maps
                                 </a>
                             </div>
 
                             <div class="relative bg-slate-100 h-96 flex items-center justify-center p-6 text-center">
-                                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#0055A5_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#0b5e28_1px,transparent_1px)] [background-size:20px_20px]"></div>
                                 
-                                <div class="relative z-10 bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-md border border-slate-200">
-                                    <div class="w-16 h-16 bg-red-500 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 animate-bounce shadow-lg">
+                                <div class="relative z-10 bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-md border border-slate-200">
+                                    <div class="w-16 h-16 bg-brand-green text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg">
                                         <i class="fa-solid fa-location-dot"></i>
                                     </div>
                                     <h4 class="font-black text-slate-900 text-xl">SUMAN ENTERPRISES</h4>
                                     <p class="text-xs text-slate-600 mt-2">B1/201, Rose Parade, NIBM, Pune, Maharashtra - 411048</p>
                                     <div class="mt-6 flex justify-center space-x-3">
-                                        <a href="tel:9763712496" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+                                        <a href="tel:9763712496" class="bg-brand-green hover:bg-brand-darkgreen text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
                                             <i class="fa-solid fa-phone"></i> Call 9763712496
                                         </a>
-                                        <a href="mailto:Seashellswater@gmail.com" class="bg-brand-deep hover:bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+                                        <a href="mailto:Seashellswater@gamil.com" class="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
                                             <i class="fa-solid fa-envelope"></i> Send Email
                                         </a>
                                     </div>
@@ -670,10 +694,10 @@
 
                             <div class="p-6 bg-slate-50 border-t border-slate-100 flex flex-wrap justify-between items-center text-xs text-slate-600">
                                 <div>
-                                    <i class="fa-solid fa-clock text-brand-blue mr-1"></i> Business Hours: <strong>Mon - Sat: 9:00 AM - 7:00 PM</strong>
+                                    <i class="fa-solid fa-clock text-brand-green mr-1"></i> Business Hours: <strong>Mon - Sat: 9:00 AM - 7:00 PM</strong>
                                 </div>
                                 <div>
-                                    <i class="fa-solid fa-truck text-emerald-600 mr-1"></i> Bulk Delivery Available Across Pune & Raigad Region
+                                    <i class="fa-solid fa-truck text-emerald-600 mr-1"></i> Direct Supply Across Pune & Raigad Region
                                 </div>
                             </div>
 
@@ -695,7 +719,7 @@
                 <div class="md:col-span-2 space-y-4">
                     <div class="flex items-center space-x-2 cursor-pointer" onclick="switchTab('home')">
                         <span class="text-2xl font-black text-white">SEA</span>
-                        <span class="text-xl font-serif italic text-brand-light">Shells</span>
+                        <span class="text-xl font-serif italic text-emerald-400">Shells</span>
                     </div>
                     <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
                         Packaged Drinking Water with Added Minerals & Delicious Sugar-Free Flavoured Drinks. Manufactured with precision and purity.
@@ -710,8 +734,8 @@
                     <ul class="space-y-2 text-xs">
                         <li><button onclick="switchTab('home')" class="hover:text-white transition">Home</button></li>
                         <li><button onclick="switchTab('about')" class="hover:text-white transition">About Us</button></li>
-                        <li><button onclick="switchTab('products')" class="hover:text-white transition">Product Catalog</button></li>
-                        <li><button onclick="switchTab('contact')" class="hover:text-white transition">Contact Details</button></li>
+                        <li><button onclick="switchTab('products')" class="hover:text-white transition">Products Catalog</button></li>
+                        <li><button onclick="switchTab('contact')" class="hover:text-white transition">Contact Us</button></li>
                     </ul>
                 </div>
 
@@ -719,8 +743,8 @@
                     <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Marketed By</h4>
                     <p class="text-xs font-bold text-slate-200">SUMAN ENTERPRISES</p>
                     <p class="text-xs text-slate-400 mt-1">B1/201, Rose Parade, NIBM, Pune - 411048</p>
-                    <p class="text-xs text-slate-400 mt-2"><i class="fa-solid fa-phone text-brand-light mr-1"></i> 9763712496</p>
-                    <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-envelope text-brand-light mr-1"></i> Seashellswater@gmail.com</p>
+                    <p class="text-xs text-slate-400 mt-2"><i class="fa-solid fa-phone text-emerald-400 mr-1"></i> 9763712496</p>
+                    <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-envelope text-emerald-400 mr-1"></i> Seashellswater@gamil.com</p>
                     <p class="text-[10px] text-slate-500 mt-3">FSSAI Lic No: 2152080000805</p>
                 </div>
 
@@ -728,12 +752,12 @@
 
             <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
                 <p>&copy; 2026 SEA Shells. All Rights Reserved.</p>
-                <p class="mt-2 sm:mt-0">Pure Water & Natural Refreshment</p>
+                <p class="mt-2 sm:mt-0">Packaged Mineral Water & Beverages</p>
             </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <!-- INTERACTIVE SCRIPT LOGIC -->
     <script>
         function switchTab(tabId) {
             const pages = document.querySelectorAll('.page-content');
@@ -765,14 +789,14 @@
             const btns = document.querySelectorAll('.prod-filter-btn');
 
             btns.forEach(btn => {
-                btn.classList.remove('bg-brand-deep', 'text-white');
+                btn.classList.remove('bg-brand-green', 'text-white');
                 btn.classList.add('bg-slate-100', 'text-slate-700');
             });
 
             const activeBtn = document.getElementById('filter-' + category);
             if(activeBtn) {
                 activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
-                activeBtn.classList.add('bg-brand-deep', 'text-white');
+                activeBtn.classList.add('bg-brand-green', 'text-white');
             }
 
             items.forEach(item => {
